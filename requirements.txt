@@ -1,0 +1,13 @@
+# Minimum versions for development. At Gate M3, pin exact versions from the
+# environment that trained the models (pip freeze) before deploying.
+streamlit>=1.35
+pandas>=2.0
+numpy>=1.26
+scipy>=1.11
+scikit-learn>=1.4
+statsmodels>=0.14
+matplotlib>=3.8
+seaborn>=0.13
+plotly>=5.20
+joblib>=1.3
+ipykernel>=6.29
