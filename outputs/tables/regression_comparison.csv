@@ -1,0 +1,4 @@
+Model,R2,Adj_R2,RMSE,MAE
+Simple linear (PM2.5),0.753,0.752,56.452,41.823
+Multiple linear,0.866,0.862,42.288,31.044
+Polynomial (PM2.5 squared),0.881,0.877,39.777,29.286
