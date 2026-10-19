@@ -1,7 +1,5 @@
 """Shared helpers for the AQI predictive analytics project.
 
-Owner: Member 1. Member 2 may import from here but should ask before editing.
-
 Every path in the project is built from ROOT so notebooks, the app and the
 deployed server all find the same files.
 """
@@ -18,14 +16,17 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 DATA_RAW = ROOT / "data" / "raw" / "city_day.csv"
 DATA_CLEAN = ROOT / "data" / "processed" / "aqi_delhi_clean.csv"
+DATA_2020 = ROOT / "data" / "processed" / "aqi_delhi_2020_holdout.csv"   # COVID-period hold-out
 MODELS_DIR = ROOT / "models"
 TABLES_DIR = ROOT / "outputs" / "tables"
 FIGURES_DIR = ROOT / "outputs" / "figures"
 FORECAST_CSV = ROOT / "outputs" / "forecast_monthly.csv"
 CONTROL_CSV = ROOT / "outputs" / "control_chart.csv"
+PCHART_CSV = ROOT / "outputs" / "p_chart.csv"
+TS_COMPARE_CSV = ROOT / "outputs" / "tables" / "forecast_comparison.csv"
 
 # --------------------------------------------------------------------------
-# Shared settings (see tab 5, Shared Standards)
+# Shared settings
 # --------------------------------------------------------------------------
 SEED = 42
 ALPHA = 0.05            # significance level
@@ -50,7 +51,7 @@ CONTRACT_COLUMNS = (
 
 
 # --------------------------------------------------------------------------
-# Derived-column rules (the single source of truth for both members)
+# Derived-column rules (the single source of truth for every notebook and the app)
 # --------------------------------------------------------------------------
 def season_of(month: int) -> str:
     """Winter Dec-Feb, Summer Mar-May, Monsoon Jun-Sep, Post-monsoon Oct-Nov."""
@@ -96,10 +97,10 @@ def poor_flag(aqi: float) -> int:
 # Data loading
 # --------------------------------------------------------------------------
 def load_clean(index_by_date: bool = False) -> pd.DataFrame:
-    """Load the cleaned dataset delivered by Member 2 (Gate M1)."""
+    """Load the cleaned Delhi 2015-2019 dataset written by notebook 01."""
     if not DATA_CLEAN.exists():
         raise FileNotFoundError(
-            f"{DATA_CLEAN} not found. It arrives at Gate M1 from Member 2."
+            f"{DATA_CLEAN} not found. Run notebooks/01_wrangling.ipynb first."
         )
     df = pd.read_csv(DATA_CLEAN, parse_dates=["Date"])
     return df.set_index("Date") if index_by_date else df
@@ -200,4 +201,27 @@ def save_figure(fig, name: str) -> Path:
     FIGURES_DIR.mkdir(parents=True, exist_ok=True)
     path = FIGURES_DIR / (name if name.endswith(".png") else f"{name}.png")
     fig.savefig(path, bbox_inches="tight", dpi=150)
+    return path
+
+
+# --------------------------------------------------------------------------
+# Model export (plain JSON, so the deployed app needs no statsmodels/sklearn
+# and cannot break on a library version mismatch)
+# --------------------------------------------------------------------------
+def save_json(obj, name: str) -> Path:
+    """Save a dict of plain numbers/strings to models/<name>.json."""
+    import json
+
+    def _native(o):
+        if isinstance(o, (np.integer,)):
+            return int(o)
+        if isinstance(o, (np.floating,)):
+            return float(o)
+        if isinstance(o, np.ndarray):
+            return o.tolist()
+        raise TypeError(f"Cannot serialise {type(o)}")
+
+    MODELS_DIR.mkdir(parents=True, exist_ok=True)
+    path = MODELS_DIR / (name if name.endswith(".json") else f"{name}.json")
+    path.write_text(json.dumps(obj, default=_native, indent=1), encoding="utf-8")
     return path

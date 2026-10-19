@@ -1,11 +1,11 @@
-"""Gate M1 pass test: does aqi_delhi_clean.csv match the data contract?
+"""Data-contract test: does aqi_delhi_clean.csv match the agreed schema and rules?
 
 Run from the repo root:
     python src/check_contract.py
     python src/check_contract.py path/to/other_file.csv
 
 Exit code 0 means every hard check passed; 1 means at least one failed.
-Warnings do not fail the gate but should be explained in the wrangling notebook.
+Warnings do not fail the check but are explained in the wrangling notebook.
 """
 from __future__ import annotations
 

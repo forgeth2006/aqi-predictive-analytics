@@ -1,0 +1,12 @@
+Model,Test RMSE,Test MAE,Test MAPE %,Rolling RMSE,Rolling MAPE %,Skill vs seasonal naive %
+Causal regression (trend + month),29.024,24.162,13.853,30.998,11.779,27.501
+Causal regression with AR(1) errors,26.313,21.37,12.073,34.578,12.806,19.128
+"Holt-Winters (additive, damped)",30.313,26.035,14.969,34.948,13.85,18.263
+"SARIMA(1, 0, 0)(0, 1, 1)12",45.86,41.263,24.434,42.559,18.71,0.461
+"VAR(3) on AQI, PM2.5, PM10, NO2",33.939,29.06,15.7,42.601,17.254,0.363
+Seasonal naive,30.71,27.954,15.305,42.756,18.002,0.0
+Seasonal moving average (3 yr),47.546,42.464,22.087,45.671,20.157,-6.817
+"ARIMA(2, 1, 2)",89.277,79.481,55.643,92.852,45.564,-117.165
+Naive,110.361,101.68,55.151,128.505,54.958,-200.552
+Simple exponential smoothing,110.325,101.68,55.204,128.515,54.982,-200.576
+Moving average MA(3),108.371,101.68,60.701,133.227,62.236,-211.595

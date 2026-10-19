@@ -1,0 +1,9 @@
+# Everything needed to re-run the six notebooks, the tests and the app locally.
+-r requirements.txt
+statsmodels>=0.14.5   # 0.14.4 and older fail to import with SciPy >= 1.16
+scikit-learn>=1.4
+seaborn>=0.13
+jupyter>=1.0
+nbclient>=0.10
+ipykernel>=6.29
+pytest>=8.0

@@ -1,0 +1,4 @@
+Model,2019 RMSE,2019 MAPE %
+One-step ARMA + season,50.192,17.262
+Persistence (tomorrow = today),53.988,17.718
+Seasonal climatology only,80.445,31.485

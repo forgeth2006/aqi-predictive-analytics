@@ -1,0 +1,8 @@
+Estimate,Point,Method,Low,High
+Mean AQI,266.3335,t interval (assumes independence),260.8364,271.8306
+Mean AQI,266.3335,"t interval, effective n = 98",242.2621,290.4049
+Mean AQI,266.3335,moving-block bootstrap (30-day blocks),240.2032,289.4248
+Median AQI,266.0,moving-block bootstrap,232.0,296.0
+Share of Poor days,0.6796,Wald (normal approximation),0.6582,0.701
+Share of Poor days,0.6796,Wilson score,0.6579,0.7006
+Share of Poor days,0.6796,moving-block bootstrap,0.5887,0.7602
