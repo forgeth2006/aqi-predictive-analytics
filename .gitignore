@@ -11,3 +11,5 @@ venv/
 # Raw Kaggle file: not committed until the dataset licence is checked.
 # Each member downloads it from Kaggle into data/raw/ themselves.
 data/raw/*.csv
+
+.pytest_cache/
