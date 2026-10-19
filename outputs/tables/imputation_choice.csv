@@ -1,0 +1,10 @@
+Pollutant,gap <= 7 days,longer gap
+PM2.5,Iterative (MICE),Iterative (MICE)
+PM10,Iterative (MICE),Iterative (MICE)
+NO,Linear interpolation,Iterative (MICE)
+NO2,Iterative (MICE),Iterative (MICE)
+NOx,Linear interpolation,Iterative (MICE)
+NH3,Linear interpolation,Iterative (MICE)
+CO,Linear interpolation,Linear interpolation
+SO2,Linear interpolation,Iterative (MICE)
+O3,Linear interpolation,Linear interpolation

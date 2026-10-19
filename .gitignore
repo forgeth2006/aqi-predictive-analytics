@@ -1,7 +1,15 @@
 __pycache__/
-*.py[cod]
+*.pyc
+.ipynb_checkpoints/
 .venv/
 venv/
 .env
-.ipynb_checkpoints/
-data/raw/
+.DS_Store
+.vscode/
+.idea/
+
+# Raw Kaggle file: not committed until the dataset licence is checked.
+# Each member downloads it from Kaggle into data/raw/ themselves.
+data/raw/*.csv
+
+.pytest_cache/

@@ -1,0 +1,8 @@
+# Runtime requirements for the deployed Streamlit app (Streamlit Community Cloud reads this file).
+# Models are exported as plain JSON, so the app needs no statsmodels or scikit-learn.
+streamlit>=1.50
+pandas>=2.2
+numpy>=1.26
+scipy>=1.11
+matplotlib>=3.9
+plotly>=5.24

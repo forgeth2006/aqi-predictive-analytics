@@ -1,0 +1,5 @@
+method,mean,mean,std,std
+,long,short,long,short
+Calendar-month median,1.299,0.876,0.553,0.155
+Iterative (MICE),1.079,0.626,0.649,0.206
+Linear interpolation,1.266,0.484,0.492,0.112

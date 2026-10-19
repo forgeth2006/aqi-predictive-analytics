@@ -1,0 +1,6 @@
+Task,Model,Accuracy,Precision,Recall,F1,ROC_AUC,Gini,CV5 AUC,CV5 AUC sd,2019 AUC
+Poor day (binary),Logistic regression,0.94,0.956,0.956,0.956,0.981,0.961,0.98,0.004,0.976
+Poor day (binary),CART tree (pruned),0.902,0.914,0.944,0.929,0.96,0.92,0.957,0.007,0.954
+Poor day (binary),"Random forest (benchmark, beyond syllabus)",0.932,0.938,0.964,0.95,0.982,0.965,0.98,0.002,0.971
+"AQI group (3 classes, macro)",Multinomial logistic,0.902,0.867,0.842,0.854,0.973,,,,
+"AQI group (3 classes, macro)",CART tree,0.872,0.808,0.804,0.805,0.942,,,,
